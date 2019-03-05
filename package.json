@@ -2,7 +2,6 @@
   "name": "gitcourse",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://gitcourse-io.github.io/gitcourse",
   "dependencies": {
     "@pinyin/measure": "^0.0.14",
     "antd": "^3.13.6",
