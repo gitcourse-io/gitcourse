@@ -1,28 +1,34 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import {Layout, Menu, Card, Icon, Col, Row, List, Button} from 'antd';
+import {inject, observer} from "mobx-react";
+import {Route, BrowserRouter as Router} from "react-router-dom";
+import Course from "./Course";
+import Scenario from "./Scenario";
+
+const {Header, Content, Footer} = Layout;
+const gridStyle = {
+  width: '25%',
+  textAlign: 'left',
+  cursor: 'pointer'
+};
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <div className="wrapper">
+          <div style={{background: '#345d86'}}>
+            <div style={{fontSize: 24, color: '#fff', float: 'left'}}><img
+              src='http://kfcoding.com/static/logo-min.d61eb61d.png' style={{height: 64}}/> GitCourse
+            </div>
+          </div>
+          <Route exact path="/" component={Course}/>
+          <Route path="/course/scenarios/:id" component={Scenario}/>
+        </div>
+      </Router>
     );
   }
 }
 
-export default App;
+export default inject('store')(observer(App));
